@@ -7,7 +7,7 @@ import {
 import { HouseData } from '../types';
 
 @Injectable()
-export class FileTransformPipe
+export class CsvFileTransformPipe
   implements PipeTransform<Express.Multer.File, HouseData[]>
 {
   transform(value: Express.Multer.File, metadata: ArgumentMetadata) {

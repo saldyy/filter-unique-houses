@@ -6,7 +6,7 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { FileTransformPipe } from 'src/shared/pipes/file-transform.pipes';
+import { CsvFileTransformPipe } from 'src/shared/pipes/csv-transform.pipes';
 import { FileValidationPipe } from 'src/shared/pipes/file-validation.pipes';
 import { HouseData } from 'src/shared/types';
 import { HousesService } from './houses.service';
@@ -19,7 +19,7 @@ export class HousesController {
   @UseInterceptors(FileInterceptor('file', {}))
   @UsePipes(new FileValidationPipe())
   async filterUniquesHouses(
-    @UploadedFile(new FileTransformPipe()) houseData: HouseData[],
+    @UploadedFile(new CsvFileTransformPipe()) houseData: HouseData[],
   ) {
     return this.housesService.filterAddress(houseData);
   }
